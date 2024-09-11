@@ -1,0 +1,23 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install required software to build
+      run: sudo apt-get install make mingw-w64
+    - name: Compile
+      run: make -f Makefile.linux
+    - uses: actions/upload-artifact@v4
+      with: 
+       name: pafish
+       path: pafish/Output/MingW/pafish.exe
