@@ -35,6 +35,9 @@ int gensandbox_username() {
 	if (strstr(username, "MALWARE") != NULL) {
 		return TRUE;
 	}
+	if (strstr(username, "WDAGUtilityAccount") != NULL) {
+		return TRUE;
+	}
 	return FALSE;
 }
 
